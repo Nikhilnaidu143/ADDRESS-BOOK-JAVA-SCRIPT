@@ -38,24 +38,33 @@ var addressBook = new Array();
 
 /** Adding contacts when validated with regex patterns. */
 function addContacts(firstName , lastName , address , city , state , zip_code , phone_number , email){ 
-    let result_firstName = PATTERN_NAME.test(firstName); 
-    let result_lastName = PATTERN_NAME.test(lastName);
-    let result_address = PATTERN_ADDRESS.test(address);
-    let result_city = PATTERN_CITY.test(city);
-    let result_state = PATTERN_STATE.test(state);
-    let result_zip = PATTERN_ZIP.test(zip_code);
-    let result_phoneNum = PATTERN_PHONE.test(phone_number);
-    let result_email = PATTERN_EMAIL.test(email);
-
-    if(result_firstName == true && result_lastName == true && result_address == true && result_city == true && 
-       result_state == true && result_zip == true && result_phoneNum == true && result_email == true){
-
-        let contact = new Contact(firstName , lastName , address , city , state , zip_code , phone_number , email);
-
-        addressBook.push(contact);   //adding contacts to array.
+    
+    /** Duplicate check */
+    addressBook.filter(person => person.firstName === firstName)
+    .reduce( () => countPersons++ , countPersons = 0);
+    if(countPersons > 0){
+        console.log("OOPS! Contact with same first name as " + firstName + " is already exists.");
     }
     else{
-        throw "Please enter only valid contact details.";     //throwing error.
+        let result_firstName = PATTERN_NAME.test(firstName); 
+        let result_lastName = PATTERN_NAME.test(lastName);
+        let result_address = PATTERN_ADDRESS.test(address);
+        let result_city = PATTERN_CITY.test(city);
+        let result_state = PATTERN_STATE.test(state);
+        let result_zip = PATTERN_ZIP.test(zip_code);
+        let result_phoneNum = PATTERN_PHONE.test(phone_number);
+        let result_email = PATTERN_EMAIL.test(email);
+
+        if(result_firstName == true && result_lastName == true && result_address == true && result_city == true && 
+        result_state == true && result_zip == true && result_phoneNum == true && result_email == true){
+
+            let contact = new Contact(firstName , lastName , address , city , state , zip_code , phone_number , email);
+
+            addressBook.push(contact);   //adding contacts to array.
+        }
+        else{
+            throw "Please enter only valid contact details.";     //throwing error.
+        }
     }
 }
 
@@ -138,6 +147,11 @@ console.log(addressBook);
 
 /** Adding one more contact. */
 addContacts("Elon","Musk","StarBase","America","America",400005,"91 5555888822","elon-musk@gmail.com");
+console.log(addressBook);
 
 /** Calling function to find number of contacts in the address book. */
 numberOfContacts();
+
+/** Adding duplicate contact will not added to the address book. */
+addContacts("Elon","Musk","StarBase","America","America",400007,"91 5555588822","elon-musk125@gmail.com");
+
