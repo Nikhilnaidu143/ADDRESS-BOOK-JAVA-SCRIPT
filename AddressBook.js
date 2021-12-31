@@ -183,6 +183,15 @@ function countByCityOrState(choice , cityOrState){
     }
 }
 
+/** Sort contacts by using first name. */
+function sortContactsByFirstName(){
+    console.log(addressBook.sort((contact1 , contact2) => {
+        if(contact1.firstName < contact2.firstName){
+            return -1;
+        }
+    }));
+}
+
 /** Calling function by passing parameters. */
 addContacts("Nikhil","Sundarasetty","Pellur","Ongole","Andhra pradesh",523272,"91 9398359637","nikhilnaidu473@gmail.com");
 addContacts("Bill","Gates","Newyork","America","America","400 008","91 9258566655","bill-gates@gmail.com");
@@ -215,3 +224,5 @@ viewPersonByCityOrState("state", "America");
 /** Count number of persons in a particular city or state. */
 countByCityOrState("CITY" , "Ongole");
 
+/** Sorting contacts by using first name. */
+sortContactsByFirstName();
