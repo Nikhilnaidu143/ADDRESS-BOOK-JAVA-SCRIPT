@@ -108,6 +108,7 @@ function deleteContact(first_name){
         for(let i = 0; i < addressBook.length; i++){
             if(addressBook[i].firstName === first_name){    //delete contact by using splice method if contact found in the address book.
                 addressBook.splice(i , 1);
+                console.log("Successfully deleted contact with first name as " + first_name + " .");
             }
         }
     }
