@@ -115,6 +115,14 @@ function deleteContact(first_name){
     }
 }
 
+/** Counting number of contacts in the address book using reduce function. */
+function numberOfContacts(){
+    addressBook.reduce( () => {
+        count++;
+    },count = 0);
+    console.log("Number of contacts in Address Book :- " + count);
+}
+
 /** Calling function by passing parameters. */
 addContacts("Nikhil","Sundarasetty","Pellur","Ongole","Andhra pradesh",523272,"91 9398359637","nikhilnaidu473@gmail.com");
 addContacts("Bill","Gates","Newyork","America","America","400 008","91 9258566655","bill-gates@gmail.com");
@@ -127,3 +135,9 @@ console.log(addressBook);
 /** Calling function by passing parameters for delete. */
 deleteContact("Bill");
 console.log(addressBook);
+
+/** Adding one more contact. */
+addContacts("Elon","Musk","StarBase","America","America",400005,"91 5555888822","elon-musk@gmail.com");
+
+/** Calling function to find number of contacts in the address book. */
+numberOfContacts();
