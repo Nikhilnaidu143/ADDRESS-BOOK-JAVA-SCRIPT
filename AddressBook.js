@@ -149,6 +149,21 @@ function searchPersonByCityOrState(choice , cityOrState){
     }
 }
 
+/** View person by city or state. */
+function viewPersonByCityOrState(choice , cityOrState){
+    if(choice == "city" || choice == "City" || choice == "CITY"){
+        person = addressBook.filter(contact => contact.city === cityOrState)
+        console.log(person);
+    }
+    else if(choice == "state" || choice == "State" || choice == "STATE"){
+        person = addressBook.filter(contact => contact.state === cityOrState)
+        console.log(person);
+    }
+    else{
+        console.log("OOPS! Please choose city or state only to search.");
+    }
+}
+
 /** Calling function by passing parameters. */
 addContacts("Nikhil","Sundarasetty","Pellur","Ongole","Andhra pradesh",523272,"91 9398359637","nikhilnaidu473@gmail.com");
 addContacts("Bill","Gates","Newyork","America","America","400 008","91 9258566655","bill-gates@gmail.com");
@@ -174,4 +189,7 @@ addContacts("Elon","Musk","StarBase","America","America",400007,"91 5555588822",
 
 /** Calling function to search persons in a particular city/state.*/
 searchPersonByCityOrState("city" , "Ongole");
+
+/** Calling function to view contact by city or state. */
+viewPersonByCityOrState("state", "America");
 
