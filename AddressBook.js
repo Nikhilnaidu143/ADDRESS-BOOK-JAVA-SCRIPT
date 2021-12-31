@@ -61,37 +61,42 @@ function addContacts(firstName , lastName , address , city , state , zip_code , 
 
 /** Editing contacts by using first name. */
 function editContact(first_name , option , newValue){
-    addressBook.forEach(contact => {
-        if(contact.firstName == first_name){  //edit contact if contact with firstname was found in the address book.
-            switch(option){
-                case "firstName":
-                    contact.firstName = newValue;
-                    break;
-                case "lastName":
-                    contact.lastName = newValue;
-                    break;
-                case "address":
-                    contact.address - newValue;
-                    break;
-                case "city":
-                    contact.city = newValue;
-                    break;
-                case "state":
-                    contact.state = newValue;
-                    break;                    case "zipCode":
-                    contact.zip_code = newValue;
-                    break;
-                case "phoneNum":
-                    contact.phone_number = newValue;
-                    break;
-                case "email":
-                    contact.email = newValue;
-                    break;
-                default:
-                    console.log("Please choose valid option.");
+    if(addressBook.length == 0){
+        console.log("OOPS! Address Book is empty.");
+    }
+    else{
+        addressBook.forEach(contact => {
+            if(contact.firstName == first_name){  //edit contact if contact with firstname was found in the address book.
+                switch(option){
+                    case "firstName":
+                        contact.firstName = newValue;
+                        break;
+                    case "lastName":
+                        contact.lastName = newValue;
+                        break;
+                    case "address":
+                        contact.address - newValue;
+                        break;
+                    case "city":
+                        contact.city = newValue;
+                        break;
+                    case "state":
+                        contact.state = newValue;
+                        break;                    case "zipCode":
+                        contact.zip_code = newValue;
+                        break;
+                    case "phoneNum":
+                        contact.phone_number = newValue;
+                        break;
+                    case "email":
+                        contact.email = newValue;
+                        break;
+                    default:
+                        console.log("Please choose valid option.");
+                }
             }
-        }
-    });
+        });
+    }
 }
 
 /** Calling function by passing parameters. */
