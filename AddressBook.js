@@ -184,17 +184,37 @@ function countByCityOrState(choice , cityOrState){
 }
 
 /** Sort contacts by using first name. */
-function sortContactsByFirstName(){
+function sortByFirstNameCityStateZip(choice){
     console.log(addressBook.sort((contact1 , contact2) => {
-        if(contact1.firstName < contact2.firstName){
+        if(choice == "firstName" || choice == "FirstName" || choice == "Firstname" || choice == "FIRSTNAME"){
+            first = contact1.firstName;
+            second = contact2.firstName;          
+        }
+        else if(choice == "city" || choice == "City" || choice == "CITY"){
+            first = contact1.city;
+            second = contact2.city;          
+        }
+        else if(choice == "state" || choice == "State" || choice == "STATE"){
+            first = contact1.state;
+            second = contact2.state;
+        }
+        else if(choice == "zip" || choice == "Zip" || choice == "ZIP"){
+            first = contact1.zip_code;
+            second = contact2.zip_code;
+        }
+        else{
+            console.log("Please choose only valid option(FirstName , City , State , Zip)");
+        }
+        if(first < second){
             return -1;
         }
-        else if(contact1.firstName == contact2.firstName){
+        else if(first == second){
             return 0;
         }
         else{
             return 1;
         }
+
     }));
 }
 
@@ -230,5 +250,5 @@ viewPersonByCityOrState("state", "America");
 /** Count number of persons in a particular city or state. */
 countByCityOrState("CITY" , "Ongole");
 
-/** Sorting contacts by using first name. */
-sortContactsByFirstName();
+/** Sorting contacts by using FirstName/City/State/Zip. */
+sortByFirstNameCityStateZip("ZIP");
