@@ -189,6 +189,12 @@ function sortContactsByFirstName(){
         if(contact1.firstName < contact2.firstName){
             return -1;
         }
+        else if(contact1.firstName == contact2.firstName){
+            return 0;
+        }
+        else{
+            return 1;
+        }
     }));
 }
 
