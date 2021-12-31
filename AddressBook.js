@@ -99,6 +99,20 @@ function editContact(first_name , option , newValue){
     }
 }
 
+/** Deleing contact from the address book array by first name. */
+function deleteContact(first_name){
+    if(addressBook.length == 0){
+        console.log("OOPS! Address Book is empty.");
+    }
+    else{
+        for(let i = 0; i < addressBook.length; i++){
+            if(addressBook[i].firstName === first_name){    //delete contact by using splice method if contact found in the address book.
+                addressBook.splice(i , 1);
+            }
+        }
+    }
+}
+
 /** Calling function by passing parameters. */
 addContacts("Nikhil","Sundarasetty","Pellur","Ongole","Andhra pradesh",523272,"91 9398359637","nikhilnaidu473@gmail.com");
 addContacts("Bill","Gates","Newyork","America","America","400 008","91 9258566655","bill-gates@gmail.com");
@@ -106,4 +120,8 @@ console.log(addressBook);
 
 /** Calling function by passing parameters for edit. */
 editContact("Nikhil","state","Andhra");
+console.log(addressBook);
+
+/** Calling function by passing parameters for delete. */
+deleteContact("Bill");
 console.log(addressBook);
