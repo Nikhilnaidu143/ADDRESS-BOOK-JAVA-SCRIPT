@@ -33,6 +33,9 @@ const PATTERN_ZIP = /^[\d]{3}[\s]?[\d]{3}$/;
 const PATTERN_PHONE = /^[\d]{2}(\s){1}[\d]{10}$/;
 const PATTERN_EMAIL = /^[\w+-]+(\.[\w+-]+)*@[\w]+(\.[\w]+)?(?=(\.[A-Za-z_]{2,3}$|\.[a-zA-Z]{2,3}$)).*$/;
 
+/** Array Intialization. */
+var addressBook = new Array();
+
 /** Adding contacts when validated with regex patterns. */
 function addContacts(firstName , lastName , address , city , state , zip_code , phone_number , email){ 
     let result_firstName = PATTERN_NAME.test(firstName); 
@@ -49,7 +52,7 @@ function addContacts(firstName , lastName , address , city , state , zip_code , 
 
         let contact = new Contact(firstName , lastName , address , city , state , zip_code , phone_number , email);
 
-        console.log("Contact validated successfully.")
+        addressBook.push(contact);   //adding contacts to array.
     }
     else{
         throw "Please enter only valid contact details.";     //throwing error.
@@ -58,3 +61,13 @@ function addContacts(firstName , lastName , address , city , state , zip_code , 
 
 /** Calling function by passing parameters. */
 addContacts("Nikhil","Sundarasetty","Pellur","Ongole","Andhra pradesh",523272,"91 9398359637","nikhilnaidu473@gmail.com");
+addContacts("Bill","Gates","Newyork","America","America","400 008","91 9258566655","bill-gates@gmail.com");
+
+/** Displaying contacts in the address book array. */
+function displayContacts(){
+    for(let i = 0; i < addressBook.length; i++){
+        console.log(addressBook[i]);
+    }
+}
+
+displayContacts(); //calling function to print array.
