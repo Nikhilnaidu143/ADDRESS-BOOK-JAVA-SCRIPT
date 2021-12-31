@@ -82,7 +82,8 @@ function editContact(first_name , option , newValue){
                         break;
                     case "state":
                         contact.state = newValue;
-                        break;                    case "zipCode":
+                        break;                   
+                    case "zipCode":
                         contact.zip_code = newValue;
                         break;
                     case "phoneNum":
