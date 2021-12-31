@@ -160,7 +160,26 @@ function viewPersonByCityOrState(choice , cityOrState){
         console.log(person);
     }
     else{
-        console.log("OOPS! Please choose city or state only to search.");
+        console.log("OOPS! Please choose city or state only to view.");
+    }
+}
+
+/** Count persons by city or state. */
+function countByCityOrState(choice , cityOrState){
+    if(choice == "city" || choice == "City" || choice == "CITY"){
+        addressBook.filter(contact => contact.city === cityOrState)
+        .reduce( () => {count++;} , count = 0);
+        
+        console.log("Number of persons in " + cityOrState + " :- " + count);
+    }
+    else if(choice == "state" || choice == "State" || choice == "STATE"){
+        addressBook.filter(contact => contact.state === cityOrState)
+        .reduce( () => {count++;} , count = 0);
+        
+        console.log("Number of persons in " + cityOrState + " :- " + count);
+    }
+    else{
+        console.log("OOPS! Please choose city or state only to count.");
     }
 }
 
@@ -192,4 +211,7 @@ searchPersonByCityOrState("city" , "Ongole");
 
 /** Calling function to view contact by city or state. */
 viewPersonByCityOrState("state", "America");
+
+/** Count number of persons in a particular city or state. */
+countByCityOrState("CITY" , "Ongole");
 
