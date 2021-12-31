@@ -132,6 +132,23 @@ function numberOfContacts(){
     console.log("Number of contacts in Address Book :- " + count);
 }
 
+/** Search person in a particular city or state. */
+function searchPersonByCityOrState(choice , cityOrState){
+    if(choice == "city" || choice == "City" || choice == "CITY"){
+        person = addressBook.filter(contact => contact.city === cityOrState)
+        .map(contact => contact.firstName);
+        console.log(person);
+    }
+    else if(choice == "state" || choice == "State" || choice == "STATE"){
+        person = addressBook.filter(contact => contact.state === cityOrState)
+        .map(contact => contact.firstName);
+        console.log(person);
+    }
+    else{
+        console.log("OOPS! Please choose city or state only to search.");
+    }
+}
+
 /** Calling function by passing parameters. */
 addContacts("Nikhil","Sundarasetty","Pellur","Ongole","Andhra pradesh",523272,"91 9398359637","nikhilnaidu473@gmail.com");
 addContacts("Bill","Gates","Newyork","America","America","400 008","91 9258566655","bill-gates@gmail.com");
@@ -154,4 +171,7 @@ numberOfContacts();
 
 /** Adding duplicate contact will not added to the address book. */
 addContacts("Elon","Musk","StarBase","America","America",400007,"91 5555588822","elon-musk125@gmail.com");
+
+/** Calling function to search persons in a particular city/state.*/
+searchPersonByCityOrState("city" , "Ongole");
 
